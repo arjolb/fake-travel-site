@@ -1,8 +1,9 @@
 .feature-item{
     position: relative;
-    margin-bottom: 6.15rem;
+    margin-bottom: 1.15rem;
     @mixin atSmall{
         padding-left: 5.6rem;
+        margin-bottom: 6.15rem;
     }
     &_icon{
         display: block;

@@ -3,6 +3,7 @@
     padding-right: 18px;
     max-width: 1236px;
     margin: auto;
+    overflow: hidden;
     &-medium{
         max-width: 976px;
     }
@@ -14,5 +15,12 @@
      @mixin atSmall{
         margin-bottom: 3.875rem;
      }   
+    }
+    &-no-padding-until-medium{
+       padding: 0;
+        @mixin atMedium{
+            padding-left: 18px;
+            padding-right: 18px;
+        }
     }
 }

@@ -1,6 +1,5 @@
 .row{
     @mixin clearfix;
-    overflow: hidden;
     &-gutters{
         margin-right: -65px;
     }
@@ -36,8 +35,48 @@
             width: 50%;
         }
     }
+    @mixin atLarge{
+        &_large-4{
+            float: left;
+            width: 33.33%;
+        }
+        &_large-4-larger{
+            width:37%;
+        }
+        &_large-8{
+            float: left;
+            width: 66.66%;
+        }
+        &_large-8-smaller{
+            width: 63%;
+        }
+        &_large-bottom-margin-until-medium{
+            margin-bottom: 0;
+        }
+        &_large-6{
+            float: left;
+            width: 50%;
+        }
+    }
     &_medium-bottom-margin-until-medium{
             margin-bottom: 1rem;
         }
-    
+    &-testimonials-gutters{
+        margin-right: -45px;
+    }
+    &-testimonials-gutters>div{
+        padding-right: 45px;
+    }
+    &-top-padding{
+        padding-top: 55px;
+    }
+    &-equal-height{
+        @mixin atLarge{
+            display:flex;
+        }
+        &>div{
+            float: none;
+            display:flex;
+        }
+    }
 }
