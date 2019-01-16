@@ -1,12 +1,18 @@
 .row{
-    @mixin clearFix;
-    &--gutters {
+    @mixin clearfix;
+    overflow: hidden;
+    &-gutters{
         margin-right: -65px;
-      }
-    
-      &--gutters > div {
+    }
+    &-gutters>div{
         padding-right: 65px;
-      }
+    }
+    &-gutters-large{
+        margin-right: -100px;
+    }
+    &-gutters-large>div{
+        padding-right: 100px;
+    }
     @mixin atMedium{
         &_medium-4{
             float: left;
@@ -25,8 +31,13 @@
         &_medium-bottom-margin-until-medium{
             margin-bottom: 0;
         }
+        &_medium-6{
+            float: left;
+            width: 50%;
+        }
     }
     &_medium-bottom-margin-until-medium{
             margin-bottom: 1rem;
         }
+    
 }

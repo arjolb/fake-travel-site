@@ -1,7 +1,8 @@
 .generic-content{
     p{
         line-height:1.65;
+        font-weight: 300;
         font-size:1.125rem;
-        margin: 1.75rem 0;
+        margin: 0 0 1.75rem 0;
     }
 }
