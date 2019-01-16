@@ -16,7 +16,7 @@
     }
   }
   
-  @define-mixin clearFix{
+  @define-mixin clearfix{
     &::after{
       content: "";
       clear: both;
