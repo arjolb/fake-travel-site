@@ -9,13 +9,13 @@ cssImport = require('postcss-import'),
 mixins=require('postcss-mixins'),
 svgSprite=require('gulp-svg-sprite'),
 rename=require('gulp-rename'),
-del=require('del');
-
+del=require('del'),
+hexrgba=require('postcss-hexrgba');
 
 /* Styles tasks */
 gulp.task('styles', function() {
   return gulp.src('./app/assets/styles/styles.css')
-  .pipe(postcss([cssImport, mixins, cssvars, nested, autoprefixer]))
+  .pipe(postcss([cssImport, mixins, cssvars, nested,hexrgba, autoprefixer]))
   .on('error',function (e) {  
         console.log(e.toString());
     })
