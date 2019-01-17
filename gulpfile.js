@@ -6,7 +6,10 @@ autoprefixer = require('autoprefixer'),
 cssvars = require('postcss-simple-vars'),
 nested = require('postcss-nested'),
 cssImport = require('postcss-import'),
-mixins=require('postcss-mixins');
+mixins=require('postcss-mixins'),
+svgSprite=require('gulp-svg-sprite'),
+rename=require('gulp-rename'),
+del=require('del');
 
 
 /* Styles tasks */
@@ -46,3 +49,32 @@ gulp.task('watch', function() {
   });
 
 /*Watch tasks end*/
+
+
+
+
+/* Svg Sprite */
+  var config={
+    mode:{
+      css:{
+        render:{
+          css:{
+            template: 'templates/sprite.css'
+          }
+        }
+      }
+    }
+  }
+  gulp.task('createSprite',function(){
+    return gulp.src('app/assets/images/icons/**/*.svg')
+    .pipe(svgSprite(config))
+    .pipe(gulp.dest('app/sprite'));
+  });
+  gulp.task('copySpriteCSS',['createSprite'],function(){
+    return gulp.src('app/sprite/css/**/*.css')
+    .pipe(rename('_sprite.css'))
+    .pipe(gulp.dest('app/assets/styles/modules'));
+  });
+
+  gulp.task('icons',['createSprite','copySpriteCSS']);
+/* Svg Sprite end*/
