@@ -1,8 +1,10 @@
 import MobileMenu from './modules/MobileMenu';
 import RevealOnScroll from './modules/RevealOnScroll';
 import StickyHeader from './modules/StickyHeader';
+import ModalOverlay from './modules/ModalOverlay';
 import $ from 'jquery';
-var mobileMenu=new MobileMenu();
+new MobileMenu();
 new RevealOnScroll($(".feature-item"),"85%");
 new RevealOnScroll($(".testimonial"),"50%");
 new StickyHeader();
+new ModalOverlay();

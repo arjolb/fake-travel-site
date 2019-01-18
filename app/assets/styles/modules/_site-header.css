@@ -4,12 +4,14 @@
     width: 100%;
     padding: 12px 0;
     transition:all .3s ease-out;
+    overflow: hidden;
     &_is-expanded{
         background-color: rgba($blueColor,.5);
     }
     @mixin atMedium{
         background-color: rgba($blueColor, .3);
         position: fixed;
+        overflow: visible;
         &-fixed-bar{
             background-color: rgba(23,51,72, .85);
         }
@@ -68,7 +70,7 @@
         top: 0;
         left: 50%;
         transform: translateX(-50%) scale(.8);
-        transform-origin: 50% 0;
+        transform-origin: 50% 0%;
         transition: all .3s ease-out;
         @mixin atMedium{
             left: auto;
