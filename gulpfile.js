@@ -10,7 +10,8 @@ mixins=require('postcss-mixins'),
 svgSprite=require('gulp-svg-sprite'),
 rename=require('gulp-rename'),
 del=require('del'),
-hexrgba=require('postcss-hexrgba');
+hexrgba=require('postcss-hexrgba'),
+webpack=require('webpack');
 
 /* Styles tasks */
 gulp.task('styles', function() {
@@ -46,6 +47,9 @@ gulp.task('watch', function() {
       gulp.start('cssInject');
     });
   
+    watch('./app/assets/scripts/**/*.js',function(){
+      gulp.start('scriptsRefresh');
+    });
   });
 
 /*Watch tasks end*/
@@ -78,3 +82,17 @@ gulp.task('watch', function() {
 
   gulp.task('icons',['createSprite','copySpriteCSS']);
 /* Svg Sprite end*/
+
+/* Scripts tasks*/
+  gulp.task('scripts',function(){
+    webpack(require('./webpack.config.js'),function(error,stats){
+      if (error) {
+        console.log(error.toString());
+      }
+      console.log(stats.toString());
+    });
+  });
+  gulp.task('scriptsRefresh',['scripts'],function(){
+    browserSync.reload();
+  });
+/* Scripts tasks end */

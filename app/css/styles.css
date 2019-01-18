@@ -921,8 +921,13 @@ a{
     position: absolute;
     z-index: 2;
     width: 100%;
-    padding: 10px 0;
+    padding: 12px 0;
+    transition:all .3s ease-out;
 }
+
+.site-header_is-expanded{
+        background-color: rgba(47,85,114,.5);
+    }
 
 @media (min-width: 800px) {
 
@@ -932,11 +937,27 @@ a{
     }
 
 .site-header_btn{
-        float: right;
+        float: none;
+        margin-bottom: .4rem;
+    }
+
+@media (min-width: 800px) {
+
+.site-header_btn{
+            float: right;
+            margin-bottom:0
+    }
     }
 
 .site-header_nav{
-        float: right;
+        float: none;
+    }
+
+@media (min-width: 800px) {
+
+.site-header_nav{
+            float: right
+    }
     }
 
 .site-header_nav ul{
@@ -952,17 +973,37 @@ a{
 
 .site-header_nav li{
             list-style: none;
-            float: left;
-            padding-right: 20px;
+            float: none;
+            display: inline-block;
+            padding-right: 4px;
         }
+
+@media (min-width: 800px) {
+
+.site-header_nav li{
+                float: left;
+                padding-right: 20px
+        }
+    }
 
 .site-header_nav a{
             text-decoration: none;
             color: #fff;
             font-weight: 300;
-            padding: 12px 0;
+            padding:  7px;
             display: block;
+            font-size: .7rem;
+            background-color: rgba(47,85,114, .6);
         }
+
+@media (min-width: 800px) {
+
+.site-header_nav a{
+                font-size: 1rem;
+                background-color: transparent;
+                padding: 12px 0px
+        }
+    }
 
 .site-header_logo{
         position: absolute;
@@ -990,23 +1031,42 @@ a{
     }
 
 .site-header_menu-content{
-        display: none;
+        opacity: 0;
+        transition: all .3s ease-out;
+        -webkit-transform: scale(1.2);
+                transform: scale(1.2);
+        z-index: -10;
+        position: relative;
+        padding-top: 85px;
+        text-align: center;
     }
 
 @media (min-width: 800px) {
 
 .site-header_menu-content{
-            display: block
+            opacity: 1;
+            z-index: 1;
+            padding-top: 0;
+            -webkit-transform: scale(1);
+                    transform: scale(1)
     }
     }
 
+.site-header_menu-content-is-visible{
+            opacity: 1;
+            z-index: 1;
+            -webkit-transform:scale(1);
+                    transform:scale(1);
+        }
+
 .site-header_menu-icon{
         width: 20px;
-        height: 20px;
-        background-color: #fff;
+        height: 19px;
         position: absolute;
         top: 10px;
         right: 10px;
+        cursor: pointer;
+        z-index: 10;
     }
 
 @media (min-width: 800px) {
@@ -1015,3 +1075,57 @@ a{
             display:none
     }
     }
+
+.site-header_menu-icon::before{
+        content:"";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width:20px;
+        height: 3px;
+        background-color:#fff;
+        -webkit-transform-origin: 0 0;
+                transform-origin: 0 0;
+        transition: all .2s ease-out;
+    }
+
+.site-header_menu-icon-middle{
+        position: absolute;
+        top: 8px;
+        left: 0;
+        width:20px;
+        height: 3px;
+        background-color:#fff;
+        transition: all .2s ease-out;
+        -webkit-transform-origin: 0 50%;
+                transform-origin: 0 50%;
+    }
+
+.site-header_menu-icon::after{
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width:20px;
+        height: 3px;
+        background-color:#fff;
+        -webkit-transform-origin: 0 100%;
+                transform-origin: 0 100%;
+        transition: all .2s ease-out;
+    }
+
+.site-header_menu-icon-close-x::before{
+            -webkit-transform: rotate(45deg) scaleX(1.2);
+                    transform: rotate(45deg) scaleX(1.2);
+        }
+
+.site-header_menu-icon-close-x .site-header_menu-icon-middle{
+            opacity: 0;
+            -webkit-transform: scaleX(0);
+                    transform: scaleX(0);
+        }
+
+.site-header_menu-icon-close-x::after{
+            -webkit-transform: rotate(-45deg)  scaleX(1.2) translateY(1px);
+                    transform: rotate(-45deg)  scaleX(1.2) translateY(1px);
+        }

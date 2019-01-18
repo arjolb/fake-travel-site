@@ -2,15 +2,27 @@
     position: absolute;
     z-index: 2;
     width: 100%;
-    padding: 10px 0;
+    padding: 12px 0;
+    transition:all .3s ease-out;
+    &_is-expanded{
+        background-color: rgba($blueColor,.5);
+    }
     @mixin atMedium{
         background-color: rgba($blueColor, .3);
     }
     &_btn{
-        float: right;
+        float: none;
+        margin-bottom: .4rem;
+        @mixin atMedium{
+            float: right;
+            margin-bottom:0;
+        }
     }
     &_nav{
-        float: right;
+        float: none;
+        @mixin atMedium{
+            float: right;
+        }
         ul{
             margin: 0;
             padding: 0;
@@ -18,15 +30,27 @@
         }
         li{
             list-style: none;
-            float: left;
-            padding-right: 20px;
+            float: none;
+            display: inline-block;
+            padding-right: 4px;
+            @mixin atMedium{
+                float: left;
+                padding-right: 20px;
+            }
         }
         a{
             text-decoration: none;
             color: #fff;
             font-weight: 300;
-            padding: 12px 0;
+            padding:  7px;
             display: block;
+            font-size: .7rem;
+            background-color: rgba($blueColor, .6);
+            @mixin atMedium{
+                font-size: 1rem;
+                background-color: transparent;
+                padding: 12px 0px;
+            }
         }
     }
     
@@ -47,20 +71,79 @@
         text-indent: -9999px;
     }
     &_menu-content{
-        display: none;
+        opacity: 0;
+        transition: all .3s ease-out;
+        transform: scale(1.2);
+        z-index: -10;
+        position: relative;
+        padding-top: 85px;
+        text-align: center;
         @mixin atMedium{
-            display: block;
+            opacity: 1;
+            z-index: 1;
+            padding-top: 0;
+            transform: scale(1);
+        }
+        &-is-visible{
+            opacity: 1;
+            z-index: 1;
+            transform:scale(1);
         }
     }
     &_menu-icon{
         width: 20px;
-        height: 20px;
-        background-color: #fff;
+        height: 19px;
         position: absolute;
         top: 10px;
         right: 10px;
+        cursor: pointer;
+        z-index: 10;
         @mixin atMedium{
             display:none;
+        }
+    &::before{
+        content:"";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width:20px;
+        height: 3px;
+        background-color:#fff;
+        transform-origin: 0 0;
+        transition: all .2s ease-out;
+    }
+    &-middle{
+        position: absolute;
+        top: 8px;
+        left: 0;
+        width:20px;
+        height: 3px;
+        background-color:#fff;
+        transition: all .2s ease-out;
+        transform-origin: 0 50%;
+    }
+    &::after{
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width:20px;
+        height: 3px;
+        background-color:#fff;
+        transform-origin: 0 100%;
+        transition: all .2s ease-out;
+    }
+    }
+    &_menu-icon-close-x{
+        &::before{
+            transform: rotate(45deg) scaleX(1.2);
+        }
+        .site-header_menu-icon-middle{
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        &::after{
+            transform: rotate(-45deg)  scaleX(1.2) translateY(1px);
         }
     }
 }

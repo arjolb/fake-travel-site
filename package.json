@@ -2,7 +2,11 @@
   "name": "fake-travel-site",
   "version": "1.0.0",
   "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
     "autoprefixer": "^9.4.5",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.5",
     "browser-sync": "^2.26.3",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
@@ -14,9 +18,11 @@
     "postcss-import": "^12.0.1",
     "postcss-mixins": "^6.2.1",
     "postcss-nested": "^4.1.1",
-    "postcss-simple-vars": "^5.0.1"
+    "postcss-simple-vars": "^5.0.1",
+    "webpack": "^4.28.4"
   },
   "dependencies": {
+    "jquery": "^3.3.1",
     "normalize.css": "^8.0.1"
   }
 }
