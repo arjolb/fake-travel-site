@@ -932,8 +932,12 @@ a{
 @media (min-width: 800px) {
 
 .site-header{
-        background-color: rgba(47,85,114, .3)
+        background-color: rgba(47,85,114, .3);
+        position: fixed
 }
+        .site-header-fixed-bar{
+            background-color: rgba(23,51,72, .85);
+        }
     }
 
 .site-header_btn{
@@ -1003,6 +1007,9 @@ a{
                 background-color: transparent;
                 padding: 12px 0px
         }
+                .site-header_nav a.is-current-link{
+                    color: #fab269;
+                }
     }
 
 .site-header_logo{
@@ -1015,6 +1022,7 @@ a{
                 transform: translateX(-50%) scale(.8);
         -webkit-transform-origin: 50% 0;
                 transform-origin: 50% 0;
+        transition: all .3s ease-out;
     }
 
 @media (min-width: 800px) {
@@ -1025,6 +1033,11 @@ a{
                     transform:translateX(0)
     }
     }
+
+.site-header-fixed-bar .site-header_logo{
+            -webkit-transform: scale(0.6);
+                    transform: scale(0.6);
+        }
 
 .site-header_logo_graphic{
         text-indent: -9999px;
