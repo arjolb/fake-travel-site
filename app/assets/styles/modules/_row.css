@@ -70,7 +70,17 @@
     &-top-padding{
         padding-top: 55px;
     }
-    &-equal-height{
+    /*Equal heights rules*/
+    .flexbox &-equal-height-at-Medium{
+        @mixin atMedium{
+            display:flex;
+        }
+        &>div{
+            float: none;
+            display:flex;
+        }
+    }
+    .flexbox &-equal-height-at-Large{
         @mixin atLarge{
             display:flex;
         }

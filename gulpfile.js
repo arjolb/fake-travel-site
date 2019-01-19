@@ -11,7 +11,9 @@ svgSprite=require('gulp-svg-sprite'),
 rename=require('gulp-rename'),
 del=require('del'),
 hexrgba=require('postcss-hexrgba'),
-webpack=require('webpack');
+webpack=require('webpack'),
+svg2png=require('gulp-svg2png'),
+modernizr=require('gulp-modernizr');
 
 /* Styles tasks */
 gulp.task('styles', function() {
@@ -59,7 +61,19 @@ gulp.task('watch', function() {
 
 /* Svg Sprite */
   var config={
+    shape:{
+      spacing:{
+        padding:1
+      }
+    },
     mode:{
+      variables:{
+          replaceSvgWithPng: function () {
+            return function (sprite,render) { 
+              return render(sprite).split('.spg').join('.png');
+             }
+          }
+      },
       css:{
         render:{
           css:{
@@ -74,13 +88,20 @@ gulp.task('watch', function() {
     .pipe(svgSprite(config))
     .pipe(gulp.dest('app/sprite'));
   });
+
+  gulp.task('createPngCopy',['createSprite'],function(){
+    return gulp.src("./app/sprite/css/svg/*.svg")
+    .pipe(svg2png())
+    .pipe(gulp.dest("./app/sprite/css"));
+  });
+
   gulp.task('copySpriteCSS',['createSprite'],function(){
     return gulp.src('app/sprite/css/**/*.css')
     .pipe(rename('_sprite.css'))
     .pipe(gulp.dest('app/assets/styles/modules'));
   });
 
-  gulp.task('icons',['createSprite','copySpriteCSS']);
+  gulp.task('icons',['createSprite','createPngCopy','copySpriteCSS']);
 /* Svg Sprite end*/
 
 /* Scripts tasks*/
@@ -96,3 +117,18 @@ gulp.task('watch', function() {
     browserSync.reload();
   });
 /* Scripts tasks end */
+
+
+
+/* Modernizr */
+  gulp.task('modernizr',function(){
+    return gulp.src(['./app/assets/styles/**/*.css','./app/assets/scripts/**/*.js'])
+  .pipe(modernizr({
+    "options":[
+      "setClasses"
+    ]
+  }))
+  .pipe(gulp.dest('./app/assets/scripts/modules'));
+  });
+  
+/* Modernizr end */

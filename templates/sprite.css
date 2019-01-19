@@ -5,6 +5,9 @@
     .icon{
         background-image: url('../sprite/css/{{{sprite}}}');
     }
+    .no-svg .icon{
+        background-image: url('../sprite/css/{{#replaceSvgWithPng}}{{{sprite}}}{{/replaceSvgWithPng}}');
+    }
     {{/first}}
     .icon_{{base}}{
         width: {{width.outer}}px;
