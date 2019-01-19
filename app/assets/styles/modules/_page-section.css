@@ -10,8 +10,10 @@
     &-testimonials{
         background-color: #eaeef3;
         @mixin atLarge{
-            background: url('../assets/images/testimonials-bg.jpg') top center no-repeat;
-            background-size: cover;
+            &.lazyloaded{
+                background: url('../assets/images/testimonials-bg.jpg') top center no-repeat;
+                background-size: cover;
+            }
         }
     }
 }

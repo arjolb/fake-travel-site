@@ -8,6 +8,7 @@
   <meta name="keywords" content="Travel planning, travel bundles, travel escapes, affordable travel">
   <meta name="description" content="Your clarify. One trip away. We create soul restoring journeys that inspire you to be you.">
   <link rel="stylesheet" href="css\styles.css">
+  <script src="./scripts/Vendor.js"></script>
 </head>
 <body>
   <header class="site-header">
@@ -60,15 +61,15 @@
             <h2 class="headline headline-center headline-light headline-bottom-margin-small">The first trip we planned <strong>was our own.</strong></h2>
             <h3 class="headline headline-center headline-orange headline-small headline-narrow headline-light headline-bottom-margin-large">Ever since, we&rsquo;ve been working to make travel <strong>better for everyone.</strong></h3>
             <div class="wrapper wrapper-medium wrapper-bottom-margin">
-              <img sizes="(min-width:976px) 976px,vw" srcset="assets/images/first-trip-low-res.jpg 565w,assets/images/first-trip.jpg 976w,assets/images/first-trip-hi-dpi.jpg 1952w" alt="Couple walking down a street.">
+              <img class="lazyload" sizes="(min-width:976px) 976px,vw" data-srcset="assets/images/first-trip-low-res.jpg 565w,assets/images/first-trip.jpg 976w,assets/images/first-trip-hi-dpi.jpg 1952w" alt="Couple walking down a street.">
             </div>
             
             <div class="row row-gutters">
               <div class="row_medium-4 row_medium-4-larger row_medium-bottom-margin-until-medium">
                 <picture>
-                  <source sizes="404px" srcset="assets/images/our-start.jpg 404w,assets/images/our-start-hi-dpi.jpg 808w" media="(min-width: 1020px)">
-                    <source sizes="320px" srcset="assets/images/our-start-portrait.jpg 382w,assets/images/our-start-portrait-hi-dpi.jpg 764w" media="(min-width: 800px)">
-                      <img sizes="648px" srcset="assets/images/our-start-landscape.jpg 800w,assets/images/our-start-landscape-hi-dpi.jpg 1600w" alt="Our Founder Jane Doe">
+                  <source sizes="404px" data-srcset="assets/images/our-start.jpg 404w,assets/images/our-start-hi-dpi.jpg 808w" media="(min-width: 1020px)">
+                    <source sizes="320px" data-srcset="assets/images/our-start-portrait.jpg 382w,assets/images/our-start-portrait-hi-dpi.jpg 764w" media="(min-width: 800px)">
+                      <img class="lazyload" sizes="648px" data-srcset="assets/images/our-start-landscape.jpg 800w,assets/images/our-start-landscape-hi-dpi.jpg 1600w" alt="Our Founder Jane Doe">
                     </picture>
                   </div>
                   
@@ -125,7 +126,7 @@
                 </div> 
               </div>
               
-              <div id="testimonials" class="page-section page-section-testimonials" data-matching-link="#testimonials-link">
+              <div id="testimonials" class="page-section page-section-testimonials lazyload" data-matching-link="#testimonials-link">
                 <div class="wrapper wrapper-no-padding-until-medium">
                   <h2 class="section-title section-title_blue"><span class="icon icon_comment section-title_icon"></span> Real <strong>Testimonials</strong></h2>
                   
@@ -134,7 +135,7 @@
                     <div class="row_large-4">
                       <div class="testimonial">
                         <div class="testimonial_photo">
-                          <img sizes="160px" srcset="assets/images/testimonial-jane.jpg 160w,assets/images/testimonial-jane-hi-dpi.jpg 320w" alt="Jane Doe">
+                          <img class="lazyload" sizes="160px" data-srcset="assets/images/testimonial-jane.jpg 160w,assets/images/testimonial-jane-hi-dpi.jpg 320w" alt="Jane Doe">
                         </div>
                         <h3 class="testimonial_title">Jane Doe</h3>
                         <h4 class="testimonial_subtitle">9 Time Escaper</h4>
@@ -146,7 +147,7 @@
                     <div class="row_large-4">
                       <div class="testimonial">  
                         <div class="testimonial_photo">
-                          <img sizes="160px" srcset="assets/images/testimonial-john.jpg 160w,assets/images/testimonial-john-hi-dpi.jpg 320w" alt="John Smith">
+                          <img class="lazyload" sizes="160px" data-srcset="assets/images/testimonial-john.jpg 160w,assets/images/testimonial-john-hi-dpi.jpg 320w" alt="John Smith">
                         </div>
                         <h3 class="testimonial_title">John Smith</h3>
                         <h4 class="testimonial_subtitle">4 Time Escaper</h4>
@@ -157,7 +158,7 @@
                     <div class="row_large-4">
                       <div class="testimonial testimonial-no-bottom-margin">
                         <div class="testimonial_photo">
-                          <img sizes="160px" srcset="assets/images/testimonial-cat.jpg 160w,assets/images/testimonial-cat-hi-dpi.jpg 320w" alt="Cat McKitty">
+                          <img class="lazyload" sizes="160px" data-srcset="assets/images/testimonial-cat.jpg 160w,assets/images/testimonial-cat-hi-dpi.jpg 320w" alt="Cat McKitty">
                         </div>
                         <h3 class="testimonial_title">Cat McKitty</h3>
                         <h4 class="testimonial_subtitle">6 Time Escape</h4>
