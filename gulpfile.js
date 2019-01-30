@@ -18,9 +18,7 @@ imagemin=require('gulp-imagemin')
 usemin=require('gulp-usemin'),
 rev=require('gulp-rev'),
 uglify=require('gulp-uglify'),
-cssnano=require('gulp-cssnano'),
-htmlmin = require('gulp-htmlmin'),
-cleanCss = require('gulp-clean-css');
+cssnano=require('gulp-cssnano');
 
 /* Styles tasks */
 gulp.task('styles', function() {
@@ -143,6 +141,10 @@ gulp.task('watch', function() {
 
 /* Build Task */
 
+  gulp.task('deleteDistFolder', function() {
+    return del("./dist");
+  });
+
   gulp.task('optimizeImages',function () { 
     return gulp.src(['./app/assets/images/**/*','!./app/assets/images/icons',
     '!./app/assets/images/icons/*','./app/sprite/css/svg/*'])
@@ -154,16 +156,15 @@ gulp.task('watch', function() {
     .pipe(gulp.dest("./dist/assets/images"));
    });
 
-   gulp.task('usemin', function() {
-    return gulp.src('./app/*.html')
+
+   gulp.task('usemin', ['deleteDistFolder', 'styles', 'scripts'], function() {
+    return gulp.src("./app/index.html")
       .pipe(usemin({
-        css: [ rev() ],
-        html: [ htmlmin({ collapseWhitespace: true }) ],
-        js: [ uglify(), rev() ],
-        inlinejs: [ uglify() ],
-        inlinecss: [ cleanCss(), 'concat' ]
+        css: [function() {return rev()}, function() {return cssnano()}],
+        js: [function() {return rev()}, function() {return uglify()}]
       }))
-      .pipe(gulp.dest('dist'));
+      .pipe(gulp.dest("./dist"));
   });
    
+
   gulp.task('build',['optimizeImages','usemin']);

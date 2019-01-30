@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import waypoint from '../../../../node_modules/waypoints/lib/noframework.waypoints';
+const smoothScroll=require('jquery-smooth-scroll');
 
 class StickyHeader{
     constructor(){
@@ -8,8 +9,10 @@ class StickyHeader{
         this.createHeaderWaypoint();
         this.pageSection=$(".page-section");
         this.headerLinks=$(".site-header_nav a");
+        this.addSmoothScrolling();
         this.createPageSectionWaypoints();
     }
+
     createHeaderWaypoint(){
         var that=this;
         new Waypoint({
@@ -53,6 +56,10 @@ class StickyHeader{
             });
         });
 
+    }
+
+    addSmoothScrolling(){
+        this.headerLinks.smoothScroll();
     }
 }
 export default StickyHeader;

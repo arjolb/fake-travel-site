@@ -4,12 +4,22 @@ class RevealOnScroll{
     constructor(element,offset){
         this.itemsToReveal=element;
         this.offsetPercentage=offset;
+        this.lazyImages=$(".lazyload");
         this.hideInitially();
         this.createWayPoints();
+        this.refreshWayPoints();
     }
+
+    refreshWayPoints(){
+        this.lazyImages.on('load',function(){
+            Waypoint.refreshAll();
+        });
+    }
+
     hideInitially(){
         this.itemsToReveal.addClass("reveal-item");
     }
+
     createWayPoints(){
         var that=this;
         this.itemsToReveal.each(function(){
